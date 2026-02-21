@@ -4,11 +4,11 @@ on:
   push:
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Cache dependencies
@@ -19,5 +19,4 @@ jobs:
           key: cache-64ec23b
 
       - name: prime-cache-64ec23b
-        run: |
-          echo "Cache hit: ${{ steps.cache-step.outputs.cache-hit }}"
+        run: echo "Cache hit: ${{ steps.cache-step.outputs.cache-hit }}"
