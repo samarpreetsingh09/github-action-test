@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write   # 👈 THIS FIXES THE 403 ERROR
+  contents: write
 
 jobs:
   auto-commit:
@@ -15,15 +15,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Git
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "22f3001978@ds.study.iitm.ac.in"
+          git config user.name "github-actions"
+          git config user.email "22f3001978@ds.study.iitm.ac.in"
 
       - name: Daily commit by 22f3001978@ds.study.iitm.ac.in
         run: |
           echo "Last run: $(date)" >> daily-log.txt
           git add daily-log.txt
           git commit -m "Automated daily commit - $(date)"
-          git push
+          git push origin main
