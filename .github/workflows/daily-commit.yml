@@ -1,5 +1,5 @@
 name: Daily Commit - 22f3001978@ds.study.iitm.ac.in
-
+run-name: Daily Commit - 22f3001978@ds.study.iitm.ac.in
 on:
   schedule:
     - cron: '17 2 * * *'
